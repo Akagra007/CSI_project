@@ -1,8 +1,19 @@
 from rest_framework import serializers
-from music.models import Songs
+from database.models import Customer, Order, Product
 
-class SongsSerializer(serializers.ModelSerializer):
+class CustomerSerializer(serializers.ModelSerializer):
 	class Meta:
-		model= Songs
-		fields=('pk','title', 'artist')
+		model= Customer
+		fields=('pk','user', 'customer_id', 'customer_street', 
+			'customer_street', 'customer_phone','customer_city','customer_zip_code')
 
+class OrderSerializer(serializers.ModelSerializer):
+	class Meta:
+		model= Order
+		fields=('pk','order_id','cost', 'to_state', 'to_city', 'to_zip_code','address')
+
+class ProductSerializer(serializers.ModelSerializer):
+	class Meta:
+		model =Product
+		fields= ('pk','product_id','product_name', 'product_price')
+		
